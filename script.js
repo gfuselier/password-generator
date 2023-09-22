@@ -1,9 +1,9 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate"); //saving reference to the generate button
+// Starter Assignment Code
+var generateBtn = document.querySelector("#generate"); //saves reference to the generate button
 
-var upper = []; //google uppcase letter arrays and copy paste
-var lower = [];
-var special = []; //can put a backslash in front of quotes or exclamations to avoid bugs. or if its not working, just take them out
+var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]; 
+var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// var special = ["\!","#$%&'()*+,-./:;<=",">","?","@","[","\","^","_","`","{","|","}","~"]; //can put a backslash in front of quotes or exclamations to avoid bugs. or if its not working, just take them out
 var numbers = [];
 
 function generatePassword() {
@@ -11,6 +11,7 @@ function generatePassword() {
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
 // THEN I am presented with a series of prompts for password criteria
+//how do I get the prompt to show up only when you click the button?
 var lengthPrompt = prompt("How many characters would you like your password to be?")
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password
@@ -34,16 +35,16 @@ var lengthPrompt = prompt("How many characters would you like your password to b
   return password;
 }
 
-// Write password to the #password input
+// Starter - Write password to the #password input
 function writePassword() {
-  var password = generatePassword(); //doesn't exist yet, need to make generatePassword function
-  var passwordText = document.querySelector("#password");
+  var password = generatePassword(); //doesn't exist yet, need to make generatePassword function - done line 9
+  var passwordText = document.querySelector("#password"); //selects the password textbox
 
-  passwordText.value = password; //the password textbox will show generated password
+  passwordText.value = password; //the password textbox value will be the password that comes from generatePassword
 
 }
 
-// Add event listener to generate button
+// Starter - Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); //when I click the button, then run write password function
 
 
