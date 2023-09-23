@@ -10,12 +10,12 @@ function generatePassword() {
   //Acceptance Criteria
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
+// THEN I am presented with a series of prompts for password criteria - DONE
 // WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
+// THEN I select which criteria to include in the password - DONE
 
 // WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
+// THEN I choose a length of at least 8 characters and no more than 128 characters - DONE
 function lengthPrompt() {
   var lengthChoice = prompt("How many characters would you like your password to be?");
   console.log(lengthChoice);
@@ -32,7 +32,7 @@ if (lengthChoice > 128) {
 lengthPrompt(); //calls it for the first time
 
 // WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters - DONE
 function confirmations() {
 var lowercaseChoice = confirm("Would you like to include lowercase characters?")
 console.log(lowercaseChoice);
@@ -58,7 +58,26 @@ confirmations(); // calls it for the first time
 
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
+function combineChoices() {
+//reference things from the arrays
+// if (they chose lowercase) { pick a random lowercase letter from the array}
+if (lowercaseChoice) {
+var lowerOutput = (lowerArr[Math.floor(Math.random() * lowerArr.length)]);
+console.log(lowerOutput);
+}
+}
 
+//add them together
+
+// for (var i = 0; i < lengthChoice; i++) {
+
+// }
+// var finalPassword = string.concat(string2, string3, ..., stringX)
+// console.log(finalPassword)
+// // return finalPassword; ?
+// }
+
+combineChoices();
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
   return password;
