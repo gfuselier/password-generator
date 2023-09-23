@@ -6,7 +6,6 @@ var upperArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 var numbers = ["0","1","2","3","4","5","6","7","8","9"];
 var special = ["!","\"","#","$","%","&","\'","(",")","*","+","\,","-",".","/",":",";","<","=",">","?","@","[","\\","^","_","`","{","|","}","~"]; //can put a backslash in front of quotes or exclamations to avoid bugs. or if its not working, just take them out
 
-function generatePassword() {
   //Acceptance Criteria
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
@@ -14,11 +13,13 @@ function generatePassword() {
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password - DONE
 
+function generatePassword() {
+
 // WHEN prompted for the length of the password
 // THEN I choose a length of at least 8 characters and no more than 128 characters - DONE
+
 function lengthPrompt() {
-  var lengthChoice = prompt("How many characters would you like your password to be?");
-  console.log(lengthChoice);
+var lengthChoice = prompt("How many characters would you like your password to be?");
 if (lengthChoice < 8) {
   alert("Password length must be at least 8 characters.");
   lengthPrompt();
@@ -27,24 +28,25 @@ if (lengthChoice > 128) {
   alert("Password can be no more than 128 characters.");
   lengthPrompt();
 }
+return lengthChoice;
 }
 
-lengthPrompt(); //calls it for the first time
+console.log(lengthPrompt());  //calls it for the first time
 
 // WHEN asked for character types to include in the password
 // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters - DONE
 function confirmations() {
 var lowercaseChoice = confirm("Would you like to include lowercase characters?")
-console.log(lowercaseChoice);
+// console.log(lowercaseChoice);
 
 var uppercaseChoice = confirm("Would you like to include uppercase characters?")
-console.log(uppercaseChoice);
+// console.log(uppercaseChoice);
 
 var numbersChoice = confirm("Would you like to include numbers?");
-console.log(numbersChoice);
+// console.log(numbersChoice);
 
 var specialChoice = confirm("Would you like to include special characters?");
-console.log(specialChoice);
+// console.log(specialChoice);
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
@@ -52,29 +54,46 @@ if (!lowercaseChoice && !uppercaseChoice && !numbersChoice && !specialChoice) {
   alert("At least one character type must be selected.");
   confirmations();
 }
+
+return {
+  lowercaseChoice,
+  uppercaseChoice,
+  numbersChoice,
+  specialChoice
+};
 }
 
-confirmations(); // calls it for the first time
+console.log(confirmations()); // calls it for the first time
 
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 function combineChoices() {
 //reference things from the arrays
-// if (they chose lowercase) { pick a random lowercase letter from the array}
-if (lowercaseChoice) {
+if (confirmations().lowercaseChoice === true) {
 var lowerOutput = (lowerArr[Math.floor(Math.random() * lowerArr.length)]);
 console.log(lowerOutput);
 }
+if (confirmations().uppercaseChoice === true) {
+  var upperOutput = (upperArr[Math.floor(Math.random() * upperArr.length)]);
+  console.log(upperOutput); 
 }
-
+if (confirmations().numbersChoice === true) {
+  var numbersOutput = (numbers[Math.floor(Math.random() * numbers.length)]);
+  console.log(numbersOutput);
+}
+if (confirmations().specialChoice === true) {
+  var specialOutput = (special[Math.floor(Math.random() * special.length)]);
+  console.log(specialOutput);
+}
+}
 //add them together
 
 // for (var i = 0; i < lengthChoice; i++) {
-
+// "?????"
 // }
 // var finalPassword = string.concat(string2, string3, ..., stringX)
 // console.log(finalPassword)
-// // return finalPassword; ?
+// return finalPassword; ?
 // }
 
 combineChoices();
