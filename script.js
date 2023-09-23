@@ -69,19 +69,19 @@ console.log(confirmations()); // calls it for the first time
 // THEN a password is generated that matches the selected criteria
 function combineChoices() {
 //reference things from the arrays
-if (confirmations().lowercaseChoice === true) {
+if (confirmations.lowercaseChoice === true) {
 var lowerOutput = (lowerArr[Math.floor(Math.random() * lowerArr.length)]);
 console.log(lowerOutput);
 }
-if (confirmations().uppercaseChoice === true) {
+if (confirmations.uppercaseChoice === true) {
   var upperOutput = (upperArr[Math.floor(Math.random() * upperArr.length)]);
   console.log(upperOutput); 
 }
-if (confirmations().numbersChoice === true) {
+if (confirmations.numbersChoice === true) {
   var numbersOutput = (numbers[Math.floor(Math.random() * numbers.length)]);
   console.log(numbersOutput);
 }
-if (confirmations().specialChoice === true) {
+if (confirmations.specialChoice === true) {
   var specialOutput = (special[Math.floor(Math.random() * special.length)]);
   console.log(specialOutput);
 }
