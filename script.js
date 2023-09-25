@@ -25,6 +25,7 @@ function generatePassword() {
 		return defaultPassword;
 	  }
 
+	  // makes an array combining each array they chose
 	var allChoices = []
 	if (lowercaseChoice === true) {
 		allChoices = allChoices.concat(lowerArr);
@@ -40,12 +41,14 @@ function generatePassword() {
 	}
 
 
+	//sets values to false before they are included in password
 	  var gotLower = false
 	  var gotUpper = false
 	  var gotNumber = false
 	  var gotSpecial = false
 
 
+	//loops through each choice to pick a random character from the array
 	for (var i=0; i<lengthChoice; i++) {
 		if (lowercaseChoice === true && !gotLower) {
 			var passwordChar = (lowerArr[Math.floor(Math.random() * lowerArr.length)]);
@@ -66,7 +69,7 @@ function generatePassword() {
 			var passwordChar = (allChoices[Math.floor(Math.random() * allChoices.length)]);
 		}
 
-	  defaultPassword += passwordChar; 
+	  defaultPassword += passwordChar; //defaultPassword = defaultPassword + passwordChar
 	}
 
 	return defaultPassword;
@@ -74,10 +77,10 @@ function generatePassword() {
 
 // Starter - Write password to the #password input
 function writePassword() {
-  var password = generatePassword(); //doesn't exist yet, need to make generatePassword function - done line 9
-  var passwordText = document.querySelector("#password"); //selects the password textbox
-  passwordText.value = password; //the password textbox value will be the password that comes from generatePassword
+  var password = generatePassword();  
+  var passwordText = document.querySelector("#password"); 
+  passwordText.value = password; 
 }
 
 // Starter - Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); //when I click the button, then run write password function
+generateBtn.addEventListener("click", writePassword); 
