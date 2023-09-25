@@ -6,13 +6,14 @@ var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var special = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "_", "`", "{", "|", "}", "~"]; 
 
-var defaultPassword = "";	
-
+	
 function generatePassword() {
+	var defaultPassword = "";
 	var lengthChoice = prompt("How many characters would you like your password to be?");
 	if (lengthChoice < 8 || lengthChoice > 128) {
 		alert("Password length must be between 8 and 128 characters.");
-	  }
+		return defaultPassword;
+	  } 
 	
 	  var lowercaseChoice = confirm("Would you like to include lowercase characters?");
 	  var uppercaseChoice = confirm("Would you like to include uppercase characters?");
@@ -45,7 +46,7 @@ function generatePassword() {
 	  var gotSpecial = false
 
 
-	  for (var i=0; i<lengthChoice; i++) {
+	for (var i=0; i<lengthChoice; i++) {
 		if (lowercaseChoice === true && !gotLower) {
 			var passwordChar = (lowerArr[Math.floor(Math.random() * lowerArr.length)]);
 			gotLower = true;
@@ -75,9 +76,7 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword(); //doesn't exist yet, need to make generatePassword function - done line 9
   var passwordText = document.querySelector("#password"); //selects the password textbox
-
   passwordText.value = password; //the password textbox value will be the password that comes from generatePassword
-
 }
 
 // Starter - Add event listener to generate button
