@@ -4,8 +4,9 @@ var generateBtn = document.querySelector("#generate"); //saves reference to the 
 var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var special = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "_", "`", "{", "|", "}", "~"]; //can put a backslash in front of quotes or exclamations to avoid bugs. or if its not working, just take them out
-var defaultPassword = "";
+var special = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "_", "`", "{", "|", "}", "~"]; 
+
+var defaultPassword = "";	
 
 function generatePassword() {
 	var lengthChoice = prompt("How many characters would you like your password to be?");
@@ -23,10 +24,20 @@ function generatePassword() {
 		return defaultPassword;
 	  }
 
-	//   var allChoices = [lowercaseChoice, uppercaseChoice, numbersChoice, specialChoice]
+	var allChoices = []
 	if (lowercaseChoice === true) {
-		allChoices += lowercaseChoice
+		allChoices = allChoices.concat(lowerArr);
 	}
+	if (uppercaseChoice === true) {
+		allChoices = allChoices.concat(upperArr);
+	}
+	if (numbersChoice === true) {
+		allChoices = allChoices.concat(numbers);
+	}
+	if (specialChoice === true) {
+		allChoices = allChoices.concat(special);
+	}
+
 
 	  var gotLower = false
 	  var gotUpper = false
@@ -51,7 +62,7 @@ function generatePassword() {
 			var passwordChar = (special[Math.floor(Math.random() * special.length)]);
 			gotSpecial = true;
 		} else {
-			var passwordChar = (allArray[Math.floor(Math.random() * allArray.length)]);
+			var passwordChar = (allChoices[Math.floor(Math.random() * allChoices.length)]);
 		}
 
 	  defaultPassword += passwordChar; 
